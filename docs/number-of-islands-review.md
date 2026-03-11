@@ -68,3 +68,25 @@ grid를 변경하면 안 되는 경우:
 - `length` vs `length - 1` 범위 실수
 
 **코드 작성 후 작은 케이스로 코드 기준 손 트레이싱**을 했다면 바로 잡을 수 있었던 버그들.
+
+---
+
+## 5. 인접행렬 읽는 법 (Number of Provinces)
+
+인접행렬 `isConnected[i][j]`에서 헷갈리기 쉬운 포인트:
+
+- **row/col 인덱스 = 정점 번호** (i, j가 노드)
+- **값 = 두 정점의 관계** (0 또는 1 = 연결 여부)
+
+```java
+// 인접행렬 직접 순회
+for (int i = 0; i < connectList[start].length; i++) {
+    if (!isVisited[i] && connectList[start][i] == 1) {  // i가 다음 노드
+        dfs(i, isVisited, connectList);
+    }
+}
+```
+
+`for (int next : connectList[start])`처럼 enhanced for를 쓰면 **값(0/1)**이 순회되므로, 인덱스 기반 for문을 써야 **노드 번호**를 얻을 수 있다.
+
+> **핵심**: 인접행렬에서는 "인덱스가 노드, 값은 관계"라는 점을 항상 의식할 것.

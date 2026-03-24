@@ -7,7 +7,6 @@ import java.util.Set;
 
 public class Folder {
     public String solution(String[][] folders, String p, String q) {
-        String answer = "";
         Map<String, String> map = new HashMap<>();
         for (String[] folder : folders) {
             String parent = folder[0];
